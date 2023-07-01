@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>baitap_JS_buoi5</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- index.css  -->
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <section class="tabs-wrapper">
+          <div class="tabs-container">
+            <div class="tabs-block">
+              <div class="tabs">
+                <input type="radio" name="tabs" id="tab1" checked="checked" />
+                <label for="tab1"><span class="material-icons">favorite_border</span> Bài 1</label>
+                <div class="tab">
+                  <h2>Quản lý tuyển sinh</h2>
+                  
+                  <div class="mb-3">
+                    <label for="" class="form-label">Điểm chuẩn</label>
+                    <input type="number" min="0" max="30"
+                      class="form-control" name="" id="diemChuan" aria-describedby="helpId" placeholder=" Nhập điểm chuẩn">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Khu vực</label>
+                    <select class="form-select form-select-lg" name="" id="khuVuc">
+                      <option value="">Chọn khu vực</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Đối tượng</label>
+                    <select class="form-select form-select-lg" name="" id="doiTuong">
+                      <option value="">Chọn đối tượng</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Điểm môn thứ nhất</label>
+                    <input type="number" min="0" max="10"
+                      class="form-control" name="" id="diemMonThuNhat" aria-describedby="helpId" placeholder="Nhập điểm môn thứ nhất">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Điểm môn thứ hai</label>
+                    <input type="number" min="0" max="10"
+                      class="form-control" name="" id="diemMonThuHai" aria-describedby="helpId" placeholder="Nhập điểm môn thứ hai">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Điểm môn thứ ba</label>
+                    <input type="number" min="0" max="10"
+                      class="form-control" name="" id="diemMonThuBa" aria-describedby="helpId" placeholder="Nhập điểm môn thứ ba">
+                  </div>
+
+                  <button class="btn btn-primary ketQua" id="tinhDiem">Tính điểm</button>
+                  <div id="dauRot"></div>
+                </div>
+  
+                <input type="radio" name="tabs" id="tab2" />
+                <label for="tab2"><span class="material-icons">face</span> Bài 2</label>
+                <div class="tab">
+                    <h2>Tính tiền điện</h2>
+                    
+                    <div class="mb-3">
+                      <label for="" class="form-label">Thông tin tiêu thụ điện</label>
+                      <input type="text"
+                      class="form-control mb-2" name="" id="khachHang" aria-describedby="helpId" placeholder="Nhập tên khách hàng">
+                      <input type="number" min="0"
+                      class="form-control" name="" id="soKW" aria-describedby="helpId" placeholder="Nhập số KW điện tiêu thụ">
+                    </div>
+
+                    <button class="btn btn-primary ketQua" id="tinhTienDien">Tính tiền</button>
+                    <div id="tienDien"></div>
+                </div>
+  
+                <input type="radio" name="tabs" id="tab3" />
+                <label for="tab3"><span class="material-icons">lightbulb</span> Bài 3</label>
+                <div class="tab">
+                    <h2>Tính thuế thu nhập cá nhân</h2>
+                    
+                    <div class="mb-3">
+                      <label for="" class="form-label">Thông tin tính thuế</label>
+                      <input type="text"
+                      class="form-control mb-2" name="" id="caNhanTinhThue" aria-describedby="helpId" placeholder="Nhập họ tên">
+                      <input type="number" min="0"
+                      class="form-control mb-2" name="" id="tongThuNhapNam" aria-describedby="helpId" placeholder="Nhập tổng thu nhập năm">
+                      <input type="number" min="0"
+                      class="form-control" name="" id="soNguoiPhuThuoc" aria-describedby="helpId" placeholder="Nhập số người phụ thuộc">
+                    </div>
+
+                    <button class="btn btn-primary ketQua" id="tinhThue">Tính thuế</button>
+                    <div id="tienThue"></div>
+                </div>
+  
+                <input type="radio" name="tabs" id="tab4" />
+                <label for="tab4"><span class="material-icons">grade</span> Bài 4</label>
+                <div class="tab">
+                    <h2>Tính tiền cáp</h2>
+                    
+                    <div class="mb-3">
+                      <label for="" class="form-label">Loại khách hàng</label>
+                      <select class="form-select form-select-lg" name="" id="loaiKhachHang" onchange="functionAnHien()">
+                        <option value="">Chọn loại khách hàng</option>
+                        <option value="nhaDan">Nhà Dân</option>
+                        <option value="doanhNghiep">Doanh nghiệp</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="" class="form-label">Mã khách hàng</label>
+                      <input type="text"
+                        class="form-control" name="" id="maKhachHang" aria-describedby="helpId" placeholder="Nhập mã khách hàng">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Số kênh cao cấp</label>
+                        <input type="number" min="0"
+                          class="form-control" name="" id="soKenh" aria-describedby="helpId" placeholder=" Nhập số kênh">
+                    </div>
+
+                    <div class="mb-3" id="div_soKetNoi">
+                      <label for="" class="form-label">Số kết nối</label>
+                      <input type="number" min="0"
+                        class="form-control mb-3" name="" id="soKetNoi" aria-describedby="helpId" placeholder=" Nhập số kết nối">
+                    </div>
+
+                    <button class="btn btn-primary ketQua" id="tinhTienCap">Tính tiền</button>
+                    <div id="tienCap"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <script src="./js/index.js"></script>
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
